@@ -1,0 +1,54 @@
+# Matriz del menú:
+# [Nombre del Producto, Categoría, Precio Base]
+
+menu_restaurante = [
+    ["Hamburguesa Especial", "Comida Rapida", 25000],
+    ["Pizza Familiar", "Comida Rapida", 45000],
+    ["Ensalada Cesar", "Saludable", 18000],
+    ["Jugo Natural", "Bebidas", 12000],
+    ["Pasta Alfredo", "Comida Italiana", 32000],
+    ["Cafe Premium", "Bebidas", 15000]
+]
+
+# Categoría objetivo para aplicar descuento
+categoria_objetivo = "Comida Rapida"
+
+# Umbral mínimo del precio
+umbral_precio = 20000
+
+
+# Función para calcular el precio final
+def calcular_precio_final(categoria, precio_base):
+    """
+    Calcula el precio final de un producto.
+    Aplica 15% de descuento si:
+    - La categoría coincide con la categoría objetivo
+    - El precio base supera el umbral definido
+    """
+
+    if categoria == categoria_objetivo and precio_base > umbral_precio:
+        descuento = precio_base * 0.15
+        precio_final = precio_base - descuento
+    else:
+        precio_final = precio_base
+
+    return precio_final
+
+
+# Mostrar resultados
+print("===== MENÚ DEL RESTAURANTE =====\n")
+
+for producto in menu_restaurante:
+    nombre = producto[0]
+    categoria = producto[1]
+    precio_base = producto[2]
+
+    # Llamado a la función
+    precio_final = calcular_precio_final(categoria, precio_base)
+
+    # Mostrar información
+    print("Producto:", nombre)
+    print("Categoría:", categoria)
+    print("Precio Base: $", precio_base)
+    print("Precio Final: $", precio_final)
+    print("-" * 40)
